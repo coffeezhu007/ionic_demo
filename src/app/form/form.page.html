@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-back-button text="back" color="blue" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>用户注册</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="full">
+      <ion-label> 用户名： </ion-label>
+      <ion-input type="text" placeholder="请输入用户名" [(ngModel)]="registerInfo.username"> </ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label> 密码： </ion-label>
+      <ion-input type="password" placeholder="请输入密码" [(ngModel)]="registerInfo.password"> </ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label> 确认密码： </ion-label>
+      <ion-input type="password" placeholder="请输入确认密码" [(ngModel)]="registerInfo.rePassword"> </ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label> 性别： </ion-label>
+      男<ion-toggle color="primary" [(ngModel)]="registerInfo.sex" value='1'></ion-toggle>女
+    </ion-item>
+
+    <ion-item-divider style="margin-top:2px;">
+      支付方式
+    </ion-item-divider>
+
+    <ion-radio-group [(ngModel)]="registerInfo.payType">
+      <ion-item lines="full" style="margin-top: 0px;">
+        <ion-avatar slot="start">
+          <img src="assets/alipay.jpg">
+        </ion-avatar>
+        <ion-label>支付宝 </ion-label>
+        <ion-radio slot="end" value="1"></ion-radio>
+      </ion-item>
+      <ion-item lines="full" style="margin-top: 0px;">
+        <ion-avatar slot="start">
+          <img src="assets/wechat-pay.jpg">
+        </ion-avatar>
+        <ion-label>微信支付</ion-label>
+        <ion-radio slot="end" value="2"></ion-radio>
+      </ion-item>
+
+
+      <ion-item-divider style="margin-top:2px;">
+        爱好：
+      </ion-item-divider>
+      <ion-item lines="full" *ngFor="let item of registerInfo.hobbyList" style="margin-top: 0px;">
+        <ion-checkbox slot="start" [(ngModel)]="item.isChecked"></ion-checkbox>
+        <ion-label> {{item.value}} </ion-label>
+      </ion-item>
+
+    </ion-radio-group>
+
+    <ion-item lines="full">
+      <ion-label> 出生城市： </ion-label>
+      <ion-select placeholder="请选择" [(ngModel)]="registerInfo.cityValue">
+        <ion-select-option *ngFor="let item of registerInfo.cityList " [value]="item"> {{item}} </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label> 出生日期： </ion-label>
+      <ion-datetime name="sqsj" displayFormat="YYYY/MM/DD HH:mm" [(ngModel)]="registerInfo.birthday">
+      </ion-datetime>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-button type="submit" expand="block" round story (click)="getInfo();">提交</ion-button>
+</ion-content>

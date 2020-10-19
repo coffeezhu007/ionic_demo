@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="back" color="blue" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>searchbar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar placeholder="请输入要搜索的内容和标题">  </ion-searchbar>
+  
+    animated 动画效果
+  <ion-searchbar placeholder="请输入要搜索的内容和标题" animated ></ion-searchbar>
+  
+  只能输入数据的搜索框
+  <ion-searchbar placeholder="请输入要搜索的内容和标题" animated type="number">  </ion-searchbar>
+
+  带颜色的搜索框
+  <ion-searchbar placeholder="请输入要搜索的内容和标题" animated color="warning"></ion-searchbar>
+    
+  去抖动的属性--这个要结合F12进行观察  如果不加debounce="500" 效果就是当你输入很长的文本时，你改一下就触发一下doChange，那么你输入的单词连不起来，加上就延迟500毫秒进行事件的调用
+  <ion-searchbar placeholder="请输入要搜索的内容和标题" (ionChange)="doChange()" animated debounce="1000" [(ngModel)]="keyword" ></ion-searchbar>
+
+</ion-content>

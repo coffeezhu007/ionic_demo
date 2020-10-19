@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="back" color="blue" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>轮图片练习</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  轮播图的基本使用-带自动轮播效果，这个图有个问题，就是如何自动轮播的时候，你手动干预之后，他就不会再自动轮播了，所以请看事件
+  <ion-slides pager="true" [options]="slideOpts" #slide01  (ionSlideTouchEnd)="autoplay()">
+    <ion-slide>
+      <img src="assets/slide01.jpg">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/slide02.jpg">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/slide03.jpg">
+    </ion-slide>
+  </ion-slides>
+
+  <br>
+  轮播图的一些方法的使用
+
+  <ion-slides pager="true" #slide02>
+    <ion-slide>
+      <img src="assets/slide01.jpg">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/slide02.jpg">
+    </ion-slide>
+    <ion-slide>
+      <img src="assets/slide03.jpg">
+    </ion-slide>
+  </ion-slides>
+
+  <ion-button (click)="slidePrev()" shape="round" size="10" size="small" >
+    点击按钮跳到上一张图
+  </ion-button>
+
+
+  <ion-button (click)="slideNext()" shape="round" button-small  size="small"  >
+    点击按钮跳到下一张图
+  </ion-button>
+ 
+
+</ion-content>

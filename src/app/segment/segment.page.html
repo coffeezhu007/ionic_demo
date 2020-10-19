@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="back" color="blue" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>segment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  默认的segment
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="friends">
+      <ion-label>Friends</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="enemies">
+      <ion-label>Enemies</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <br>
+  <br>
+
+ 带图标的默认的segment
+  <!-- Scrollable Segment -->
+<ion-segment scrollable value="heart">
+  <ion-segment-button value="home">
+    <ion-icon name="home"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="heart">
+    <ion-icon name="heart"></ion-icon>
+  </ion-segment-button>
+  <ion-segment-button value="pin">
+    <ion-icon name="pin"></ion-icon>
+  </ion-segment-button>
+</ion-segment>
+
+<br>
+
+下面页面切换的segment
+[(ngModel)]="tab" 双向数据绑定，就是前台切换哪个 就会把哪个的值 给  tab这个变量的值,
+然后，下面的switch又用tab变量的值 决定到底显示哪个div
+<ion-segment (ionChange)="segmentChanged($event)"  [(ngModel)]="tab">
+  <ion-segment-button value="friends">
+    <ion-label>Friends</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="enemies">
+    <ion-label>Enemies</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+<div class="info"  [ngSwitch]="tab">
+  <div *ngSwitchCase="'friends'">
+    我的好友
+  </div>
+  <div *ngSwitchCase="'enemies'">
+    我的仇敌
+  </div>
+</div>
+{{tab}}
+
+
+</ion-content>
